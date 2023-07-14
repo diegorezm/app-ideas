@@ -1,0 +1,32 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background: #24273a;
+}
+.main_box{
+  align-items: center;
+  top: 0;
+  right: 0;
+}
+
+.main-border{
+  border: 2px solid #CAD3F5;
+  position: center;
+  justify-items: center;
+  text-align: center;
+  width: 600px;
+  height: 400px;
+  margin: auto;
+}
+
+.borderRadiusInput{
+  width: 8vw;
+  margin: 20px 20px 10px 180px;
+}
+
+p{
+  display: block;
+  color:white;
+}
