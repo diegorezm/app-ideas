@@ -1,0 +1,15 @@
+input{
+  margin: 5px;
+  border-radius: 5px;
+  height: 2em;
+}
+button{
+  width: 90px;
+  height: 2.5em;
+}
+h2{
+  font-size: 35px;
+  border-bottom: 1px solid gray;
+  border-width: 20%;
+  border-radius: 5px;
+}
