@@ -31,6 +31,7 @@ const App = () => {
     }
   }, []);
 
+
   const toggleDarkMode = () => {
     const updatedDarkMode = !storedDarkMode;
     setStoredDarkMode(updatedDarkMode);
@@ -44,7 +45,7 @@ const App = () => {
         toggleDarkMode={toggleDarkMode}
       />
       <Search setCity={setCity} />
-      {city != null && <WeatherCard city={city} saveCity={saveCity}  deleteCity={deleteCity}/>}
+      {city !== null && <WeatherCard city={city} saveCity={saveCity}  deleteCity={deleteCity}/>}
     </div>
   )
 }

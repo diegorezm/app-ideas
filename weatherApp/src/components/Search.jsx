@@ -1,7 +1,14 @@
-import {  useState } from "react"
+import { useEffect, useState } from "react"
 
 export const Search = ({ setCity }) => {
   const [input, setInput] = useState(null)
+  const getSelectedCity = localStorage.getItem("city")
+  useEffect(() => {
+    if(input === null || input === '') {
+      setCity(getSelectedCity)
+    }
+  } , [input])
+
   const handleForm = e => {
     e.preventDefault()
     setCity(input)

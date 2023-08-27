@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { getWeather } from "../api/getWeather"
 import 'material-symbols';
-export const WeatherCard = ({ city, saveCity , deleteCity}) => {
+export const WeatherCard = ({ city, saveCity, deleteCity }) => {
   const [weatherInfo, setWeatherInfo] = useState(null)
   const [loading, setLoading] = useState(false)
   const getSelectedCity = localStorage.getItem("city")
-  console.log(getSelectedCity)
+
   useEffect(() => {
+
     if (city) {
       setLoading(true)
       getWeather(city)
@@ -25,20 +26,30 @@ export const WeatherCard = ({ city, saveCity , deleteCity}) => {
 
   const DelPin = () => {
     return (
-      <div className="flex justify-end">
+      <div className="flex relative group w-fit h-fit">
         <span className="material-symbols-outlined cursor-pointer px-2 py-2" onClick={() => deleteCity()}>
           delete
         </span>
+
+        <div className="absolute left-full p-2 mx-3  bg-gray-200 text-black shadow-lg rounded-md border dark:bg-darker-green dark:text-dark-fg dark:border-none hidden group-hover:block">
+          <p className="text-gray-500  text-sm">Delete</p>
+        </div>
       </div>
+
     )
 
   }
   const Pin = () => {
     return (
-      <div className="flex justify-end">
+      <div className="flex relative group w-fit">
         <span className="material-symbols-outlined cursor-pointer px-2 py-2" onClick={() => saveCity(weatherInfo.name)}>
           location_on
         </span>
+
+        <div className="absolute left-full  p-2 mx-2 bg-gray-200 text-black shadow-lg rounded-md border dark:bg-darker-green dark:text-dark-fg dark:border-none  hidden group-hover:block">
+          <p className="text-gray-500  text-sm">Pin</p>
+        </div>
+
       </div>
     )
   }
@@ -48,6 +59,16 @@ export const WeatherCard = ({ city, saveCity , deleteCity}) => {
   }
   if (!city) {
     return
+  }
+  if (weatherInfo.name === "Error") {
+    return (
+      <div className="flex flex-col my-6  justify-center border border-gray-100  h-fit mx-2 md:m-auto md:w-1/4 transition-all shadow-xl text-2xl dark:border-none dark:bg-darker-green dark:text-white dark:drop-shadow rounded">
+
+        <p>ERROR</p>
+      </div>
+    )
+
+
   }
 
   if (loading) {
@@ -63,12 +84,22 @@ export const WeatherCard = ({ city, saveCity , deleteCity}) => {
   }
 
   return (
-    <div className="flex flex-col my-4 justify-center h-fit mx-2 md:m-auto md:w-1/4 transition-all shadow-xl text-2xl dark:bg-darker-green dark:text-white dark:drop-shadow rounded">
+    <div className="flex flex-col my-6  justify-center border border-gray-100  h-fit mx-2 md:m-auto md:w-1/4 transition-all shadow-xl text-2xl dark:border-none dark:bg-darker-green dark:text-white dark:drop-shadow rounded">
 
-      {getSelectedCity === weatherInfo.name ? <DelPin /> : <Pin />}
-      <div className="flex justify-center items-center">
-        {weatherInfo.name}
+
+
+
+      <div className=" flex items-center space-x-[90%] justify-center">
+        <p className="absolute">
+          {weatherInfo.name}
+        </p>
+
+        <p>
+          {getSelectedCity === weatherInfo.name ? <DelPin /> : <Pin />}
+        </p>
+
       </div>
+
       <div className=" flex justify-center">
         <span className="material-symbols-rounded text-8xl">{weatherInfo.emj}</span>
       </div>
@@ -77,7 +108,7 @@ export const WeatherCard = ({ city, saveCity , deleteCity}) => {
           <p className="font-bold ">{weatherInfo.temp}</p>
         </div>
         <div>
-          <p className="text-base dark:text-dark-green"> {weatherInfo.desc} </p>
+          <p className="text-base  text-gray-500  dark:text-dark-green"> {weatherInfo.desc} </p>
         </div>
       </div>
       <div className="flex justify-between p-4">
@@ -88,11 +119,11 @@ export const WeatherCard = ({ city, saveCity , deleteCity}) => {
             </span>
           </div>
 
-          <div className="flex flex-col justify-center items-center text-center">
+          <div className="flex flex-col  justify-center items-center text-center">
             <p>
               {weatherInfo.humidity}
             </p>
-            <p className="text-base dark:text-dark-green">
+            <p className="text-base text-gray-500 dark:text-dark-green">
               humidity
             </p>
 
@@ -110,7 +141,7 @@ export const WeatherCard = ({ city, saveCity , deleteCity}) => {
             <p>
               {weatherInfo.wind}
             </p>
-            <p className="text-base dark:text-dark-green">
+            <p className="text-base  text-gray-500 dark:text-dark-green">
               Wind speed
             </p>
           </div>

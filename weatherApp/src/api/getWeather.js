@@ -3,17 +3,18 @@ export const getWeather = async (city) => {
     const request = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${import.meta.env.VITE_API_KEY}`, {
       method: "GET"
     })
-    if (!request.ok) {
-      throw new Error(`Weather API request failed with status: ${request.status}`);
-    }
+
     let weatherInfo = {
       temp: "",
       desc: "",
       humidity: "",
       wind: "",
       emj: "",
-      name: ""
+      name: "",
     };
+    if (!request.ok) {
+      throw new Error(`Weather API request failed with status: ${request.status}`);
+    }
     const json = await request.json()
     let emj;
     switch (json.weather[0].main) {
@@ -60,7 +61,7 @@ export const getWeather = async (city) => {
       humidity: humidity,
       wind: wind,
       emj: emj,
-      name:name
+      name:name,
     };
 
     return weatherInfo
