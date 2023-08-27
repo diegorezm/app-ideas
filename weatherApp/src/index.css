@@ -1,0 +1,17 @@
+ @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300&family=Roboto&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ :root {
+   font-family: 'JetBrains Mono', monospace;
+   font-family: 'Roboto', sans-serif;
+  --bg-black: #040D12;
+  --fg-black: #93B1A6;
+  --darker-green: #183D3D;
+  --dark-green: #5C8374;
+ }
+.dark{
+  background: var(--bg-black);
+}

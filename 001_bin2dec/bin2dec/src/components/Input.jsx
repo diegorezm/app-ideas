@@ -3,15 +3,17 @@ import './style.css'
 
 useState
 export const Input = () => {
-  const [binary,setBinary]  = useState('0');
+  const [binary,setBinary]  = useState(0);
   let resp = binary;
 
-  if(isNaN(resp)){
-    resp = '0';
-  }
+  if (binary === null || isNaN(resp))   resp = 'Invalid';
+  
 
   function handlbinary(e){
     let bin = e.target.value;
+    if (bin !== 0 && bin !== 1) {
+      resp = 'Invalid';
+    }
     setBinary(parseInt(bin,2));
   }
 
