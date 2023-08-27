@@ -9,7 +9,7 @@ Has a dark and light mode.
 ![blackbg-search](black-bg-search.png)
 
 ## White theme
-![whitebg-home](wite-bg-home.png)
-![whitebg-search](wite-bg-search.png)
+![whitebg-home](white-bg-home.png)
+![whitebg-search](white-bg-search.png)
 
 
