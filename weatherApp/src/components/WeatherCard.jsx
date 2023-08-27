@@ -63,8 +63,12 @@ export const WeatherCard = ({ city, saveCity, deleteCity }) => {
   if (weatherInfo.name === "Error") {
     return (
       <div className="flex flex-col my-6  justify-center border border-gray-100  h-fit mx-2 md:m-auto md:w-1/4 transition-all shadow-xl text-2xl dark:border-none dark:bg-darker-green dark:text-white dark:drop-shadow rounded">
-
-        <p>ERROR</p>
+        <div className="flex justify-center items-center text-red-700">
+          <span className="material-symbols-outlined p-2">
+            error
+          </span>
+          <p>NOT FOUND</p>
+        </div>
       </div>
     )
 
